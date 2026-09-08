@@ -17,13 +17,14 @@ struct CompressorStation
     int workshopCount;
     int workshopsInOperation;
     int stationClass;
-    
+
 };
 
 int main()
 {
     Pipe pipe; // P - тип данных, p - переменная
-
+    CompressorStation station; 
+    //pipe
     cout << "Enter pipe name: ";
     cin >> pipe.name;
 
@@ -38,11 +39,45 @@ int main()
 
     cout << endl;
 
+    //station
+    cout << "Enter station name: ";
+    cin >> station.name;
+
+    cout << "Enter number of workshops: ";
+    cin >> station.workshopCount;
+
+    cout << "Enter number of workshops in operation: ";
+    cin >> station.workshopsInOperation;
+
+    cout << "Enter station class: ";
+    cin >> station.stationClass;
+
+    //out
     cout << "Pipe name: " << pipe.name << endl;
     cout << "Length: " << pipe.length << " km" << endl;
     cout << "Diameter: " << pipe.diameter << " mm" << endl;
     cout << "Repair: " << pipe.repair << endl;
- 
+    
+    //y/n
+    if (pipe.repair == true)
+    {
+        cout << "Repair: Yes" << endl;
+    }
+    else
+    {
+        cout << "Repair: No" << endl;
+    }
+
+    cout << endl;
+
+    //out
+    cout << "--- Compressor Station ---" << endl;
+    cout << "Name: " << station.name << endl;
+    cout << "Workshops: " << station.workshopCount << endl;
+    cout << "Workshops in operation: " << station.workshopsInOperation << endl;
+    cout << "Station class: " << station.stationClass << endl;
+    
+
     return 0;
     
 }
