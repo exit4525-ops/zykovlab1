@@ -1,22 +1,39 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+using namespace std; // убирает std::
 
-struct Pipe
+struct Pipe // структура трубы
 {
-    string name;
-    double length;
+    string name; // имя
+    double length; // длинна дробная или целая
     int diameter;
-    bool repair;
+    bool repair; //0/1
 };
 
 int main()
 {
-    Pipe pipe;
+    Pipe pipe; // P - тип данных, p - переменная
 
-    cout << "Program started" << endl;
+    cout << "Enter pipe name: ";
+    cin >> pipe.name;
 
+    cout << "Enter pipe length (km): ";
+    cin >> pipe.length;
+
+    cout << "Enter pipe diameter (mm): ";
+    cin >> pipe.diameter;
+
+    cout << "Is pipe under repair? (1 - y/0 - n): ";
+    cin >> pipe.repair;
+
+    cout << endl;
+
+    cout << "Pipe name: " << pipe.name << endl;
+    cout << "Length: " << pipe.length << " km" << endl;
+    cout << "Diameter: " << pipe.diameter << " mm" << endl;
+    cout << "Repair: " << pipe.repair << endl;
+ 
     return 0;
     
 }
