@@ -11,6 +11,15 @@ struct Pipe // структура трубы
     bool repair; //0/1
 };
 
+struct CompressorStation
+{
+    string name;
+    int workshopCount;
+    int workshopsInOperation;
+    int stationClass;
+    
+};
+
 int main()
 {
     Pipe pipe; // P - тип данных, p - переменная
