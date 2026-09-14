@@ -73,6 +73,18 @@ void printPipe(Pipe pipe)
     }
 }
 
+void editPipe(Pipe &pipe) // & - изменяет оригинал, а не создает копию
+{
+    if (pipe.repair == true)
+    {
+        pipe.repair = false;
+    }
+    else 
+    {
+        pipe.repair = true;
+    }
+}
+
 void printCompressorStation(CompressorStation station)
 {
     cout << "--- Compressor Station ---" << endl;
@@ -97,7 +109,7 @@ int main()
         cout << "1. Add pipe" << endl;
         cout << "2. Add compressor station" << endl;
         cout << "3. View all objects" << endl;
-        cout << "4. Edit pipe" << endl;
+        cout << "4. Edit pipe status" << endl;
         cout << "5. Edit Compressor station" << endl;
         cout << "6. Save" << endl;
         cout << "7. Load" << endl;
@@ -141,7 +153,15 @@ int main()
                 break;
             
             case 4:
-                cout << "Edit pipe" << endl;
+                if (pipeExists == true)
+                {
+                    editPipe(pipe);
+                    cout << "Pipe repair status changed" << endl;
+                }
+                else
+                {
+                    cout << "Pipe not added" << endl;
+                }
                 break;
             
             case 5:
