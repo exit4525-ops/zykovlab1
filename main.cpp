@@ -28,19 +28,23 @@ Pipe inputPipe()
     cin >> pipe.name;
 
     cout << "Enter pipe length (km): ";
-    cin >> pipe.length;
-    while (pipe.length <= 0)
+    
+    while (!(cin >> pipe.length) || pipe.length <= 0)
     {
-        cout << "length must be greater than 0. Enter ahain: ";
-        cin >> pipe.length;
+        cout << "Wrong value. Enter length again: ";
+
+        cin.clear();
+        cin.ignore(10000, '\n');
     }
 
     cout << "Enter pipe diameter (mm): ";
-    cin >> pipe.diameter;
-    while (pipe.diameter <= 0)
+    
+    while (!(cin >> pipe.diameter) || pipe.diameter <= 0)
     {
-        cout << "Diameter must be greater than 0. Enter again: ";
-        cin >> pipe.diameter;
+        cout << "Wrong value. Enter diameter again: ";
+
+        cin.clear();
+        cin.ignore(10000, '\n');
     }
 
     cout << "Is pipe under repair? (1-y/0-n): ";
@@ -49,7 +53,7 @@ Pipe inputPipe()
     return pipe;
 }
 
-CompressorStation inputSation()
+CompressorStation inputStation()
 {
     CompressorStation station;
 
@@ -57,19 +61,25 @@ CompressorStation inputSation()
     cin >> station.name;
 
     cout << "Enter number of workshops: ";
-    cin >> station.workshopCount;
-    while (station.workshopsInOperation < 0)
+    
+    while (!(cin >> station.workshopCount) || station.workshopCount < 0)
     {
-        cout << "Number cannot be negative. Enter again: ";
-        cin >> station.workshopCount;
+        cout << "Wrong value. Enter number of workshops again: ";
+
+        cin.clear();
+        cin.ignore(10000, '\n');
     }
 
     cout << "Enter number of workshops in operation: ";
-    cin >> station.workshopsInOperation;
-    while (station.workshopsInOperation > station.workshopCount || station.workshopsInOperation < 0)// || - or
+    
+    while (!(cin >> station.workshopsInOperation) || 
+            station.workshopsInOperation < 0 ||
+            station.workshopsInOperation > station.workshopCount)
     {
-        cout << "Too many workshops. Enter again: ";
-        cin >> station.workshopsInOperation;
+        cout << "Wrong value. Enter number of workshops in operation again: ";
+
+        cin.clear();
+        cin.ignore(10000, '\n');
     }
 
     cout << "Enter station class: ";
@@ -118,11 +128,15 @@ void printCompressorStation(CompressorStation station)
 void editStation(CompressorStation &station)
 {
     cout << "Enter number of workshops in operation: ";
-    cin >> station.workshopsInOperation;
-    while (station.workshopsInOperation > station.workshopCount)
+
+    while (!(cin >> station.workshopsInOperation) ||
+        station.workshopsInOperation < 0 ||
+        station.workshopsInOperation > station.workshopCount)
     {
-        cout << "Too many workshops. Enter again: ";
-        cin >> station.workshopsInOperation;
+        cout << "Wrong value. Enter number again: ";
+
+        cin.clear();
+        cin.ignore(10000, '\n');
     }
 }
 
@@ -203,7 +217,7 @@ int main()
                 break;
 
             case 2:
-                station = inputSation();
+                station = inputStation();
                 stationExists = true;
                 break;
             
@@ -264,12 +278,12 @@ int main()
                 break;
 
             case 7:
-                if (loadData(pipe, station) == true);
+                if (loadData(pipe, station) == true)
                 {
                     pipeExists = true;
                     stationExists = true;
                 }
-                2
+                
                 break;
 
             case 0:
