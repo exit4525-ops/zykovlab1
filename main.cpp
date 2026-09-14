@@ -86,6 +86,8 @@ int main()
 {
     Pipe pipe; // P - тип данных, p - переменная
     CompressorStation station; 
+    bool pipeExists = false;
+    bool stationExists = false;
 
     int command = -1;
 
@@ -107,15 +109,35 @@ int main()
         switch (command)
         {
             case 1:
-                cout << "Add pipe" << endl;
+                pipe = inputPipe();
+                pipeExists = true;
                 break;
 
             case 2:
-                cout << "Add compressor station" << endl;
+                station = inputSation();
+                stationExists = true;
                 break;
             
             case 3:
-                cout << "View all objects" << endl;
+                if (pipeExists == true)
+                {
+                    printPipe(pipe)
+                }
+                else
+                {
+                    cout << "Pipe not added" << endl;
+                }
+
+                cout << endl;
+
+                if (stationExists == true)
+                {
+                    printCompressorStation(station);
+                }
+                else
+                {
+                    cout << "Station not added" << endl;
+                }
                 break;
             
             case 4:
