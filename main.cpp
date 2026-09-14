@@ -145,16 +145,40 @@ void printCompressorStation(CompressorStation station)
 
 void editStation(CompressorStation &station)
 {
-    cout << "Enter number of workshops in operation: ";
+    int choice;
 
-    while (!(cin >> station.workshopsInOperation) ||
-        station.workshopsInOperation < 0 ||
-        station.workshopsInOperation > station.workshopCount)
+    cout << "1. Start workshop" << endl;
+    cout << "2. Stop workshop" << endl;
+    cout << "Enter choice: ";
+    cin >> choice;
+
+    if (choice == 1)
     {
-        cout << "Wrong value. Enter number again: ";
-
-        cin.clear();
-        cin.ignore(10000, '\n');
+        if (station.workshopsInOperation < station.workshopCount)
+        {
+            station.workshopsInOperation++;
+            cout << "Workshop started" << endl;
+        }
+        else
+        {
+            cout << "All workshops are already working" << endl;
+        }
+    }
+    else if (choice == 2)
+    {
+        if (station.workshopsInOperation > 0)
+        {
+            station.workshopsInOperation--;
+            cout << "Workshop stopped" << endl;
+        }
+        else
+        {
+            cout << "No working workshops" << endl;
+        }
+    }
+    else
+    {
+        cout << "Wrong choice" << endl;
     }
 }
 
