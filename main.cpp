@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream> //чтение/запись в вайл
 
 using namespace std; // убирает std::
 
@@ -100,6 +101,44 @@ void editStation(CompressorStation &station)
     cin >> station.workshopsInOperation;
 }
 
+void saveData(Pipe pipe, CompressorStation station)
+{
+    ofstream file("data.txt");//открыть файл для записи
+
+    file << pipe.name << endl;
+    file << pipe.length << endl;
+    file << pipe.diameter << endl;
+    file << pipe.repair << endl;
+
+    file << station.name << endl;
+    file << station.workshopCount << endl;
+    file << station.workshopsInOperation << endl;
+    file << station.stationClass << endl;
+
+    file.close();
+
+    cout << "Data saved" << endl;
+}
+
+void loadData(Pipe &pipe, CompressorStation &station)
+{
+    ifstream file("data.txt"); //чтение из файла
+
+    file >> pipe.name;
+    file >> pipe.length;
+    file >> pipe.diameter;
+    file >> pipe.repair;
+
+    file >> station.name;
+    file >> station.workshopCount;
+    file >> station.workshopsInOperation;
+    file >> station.stationClass;
+
+    file.close();
+
+    cout << "Data loaded" << endl;
+}
+
 int main()
 {
     Pipe pipe; // P - тип данных, p - переменная
@@ -139,7 +178,7 @@ int main()
             case 3:
                 if (pipeExists == true)
                 {
-                    printPipe(pipe)
+                    printPipe(pipe);
                 }
                 else
                 {
@@ -182,11 +221,22 @@ int main()
                 break;
             
             case 6:
-                cout << "Save" << endl;
+                if (pipeExists == true && stationExists == true)
+                {
+                    saveData(pipe, station);
+                }
+                else
+                {
+                    cout << "Add pipe & station first" << endl;
+                }
                 break;
 
             case 7:
-                cout << "Load" << endl;
+                loadData(pipe, station);
+
+                pipeExists = true;
+                stationExists = true;
+                
                 break;
 
             case 0:
