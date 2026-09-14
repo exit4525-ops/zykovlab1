@@ -47,9 +47,19 @@ Pipe inputPipe()
         cin.ignore(10000, '\n');
     }
 
-    cout << "Is pipe under repair? (1-y/0-n): ";
-    cin >> pipe.repair;
+    int repairValue;
 
+    cout << "Is pipe under repair? (1-y/0-n): ";
+    
+    while (!(cin >> repairValue) || (repairValue != 0 && repairValue != 1))
+    {
+        cout << "Wrong value. Enter 1 or 0: ";
+
+        cin.clear();
+        cin.ignore(10000, '\n');
+    }
+
+    pipe.repair = repairValue;
     return pipe;
 }
 
@@ -83,7 +93,15 @@ CompressorStation inputStation()
     }
 
     cout << "Enter station class: ";
-    cin >> station.stationClass;
+    
+    while (!(cin >> station.stationClass) || station.stationClass < 0)
+    {
+        cout << "Wrong value. Enter station class again: ";
+
+        cin.clear();
+        cin.ignore(10000, '\n');
+    }
+
     return station;
 
 }
@@ -207,7 +225,14 @@ int main()
         cout << "0. Exit" << endl;
 
         cout << "Enter command: ";
-        cin >> command;
+        
+        while (!(cin >> command) || command < 0 || command > 7)
+        {
+            cout << "Wrong command. Enter number from 0 to 7: ";
+
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
         
         switch (command)
         {
