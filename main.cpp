@@ -38,6 +38,25 @@ Pipe inputPipe()
     return pipe;
 }
 
+CompressorStation inputSation()
+{
+    CompressorStation station;
+
+    cout << "Enter station name: ";
+    cin >> station.name;
+
+    cout << "Enter number of workshops: ";
+    cin >> station.workshopCount;
+
+    cout << "Enter number of workshops in operation: ";
+    cin >> station.workshopsInOperation;
+
+    cout << "Enter station class: ";
+    cin >> station.stationClass;
+    return station;
+
+}
+
 void printPipe(Pipe pipe)
 {
     cout << "--- Pipe ---" << endl;
@@ -54,6 +73,15 @@ void printPipe(Pipe pipe)
     }
 }
 
+void printCompressorStation(CompressorStation station)
+{
+    cout << "--- Compressor Station ---" << endl;
+    cout << "Name: " << station.name << endl;
+    cout << "Workshops: " << station.workshopCount << endl;
+    cout << "Workshops in operation: " << station.workshopsInOperation << endl;
+    cout << "Station class: " << station.stationClass << endl;
+}
+
 int main()
 {
     Pipe pipe; // P - тип данных, p - переменная
@@ -61,33 +89,18 @@ int main()
 
     //pipe
     pipe = inputPipe();
-
     cout << endl;
 
     //station
-    cout << "Enter station name: ";
-    cin >> station.name;
-
-    cout << "Enter number of workshops: ";
-    cin >> station.workshopCount;
-
-    cout << "Enter number of workshops in operation: ";
-    cin >> station.workshopsInOperation;
-
-    cout << "Enter station class: ";
-    cin >> station.stationClass;
-
-    printPipe(pipe);
-
+    station = inputSation();
     cout << endl;
 
-    //out
-    cout << "--- Compressor Station ---" << endl;
-    cout << "Name: " << station.name << endl;
-    cout << "Workshops: " << station.workshopCount << endl;
-    cout << "Workshops in operation: " << station.workshopsInOperation << endl;
-    cout << "Station class: " << station.stationClass << endl;
+    //printPipe
+    printPipe(pipe);
+    cout << endl;
 
+    //printStation
+    printCompressorStation(station);
 
     return 0;
 }
