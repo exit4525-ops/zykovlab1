@@ -53,10 +53,10 @@ int main()
     cin >> station.stationClass;
 
     //out
-    cout << "Pipe name: " << pipe.name << endl;
+    cout << "--- Pipe ---" << endl;
+    cout << "Name: " << pipe.name << endl;
     cout << "Length: " << pipe.length << " km" << endl;
     cout << "Diameter: " << pipe.diameter << " mm" << endl;
-    cout << "Repair: " << pipe.repair << endl;
     
     //y/n
     if (pipe.repair == true)
@@ -76,7 +76,7 @@ int main()
     cout << "Workshops: " << station.workshopCount << endl;
     cout << "Workshops in operation: " << station.workshopsInOperation << endl;
     cout << "Station class: " << station.stationClass << endl;
-    
+
 
     return 0;
     
