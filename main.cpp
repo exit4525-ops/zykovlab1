@@ -29,9 +29,19 @@ Pipe inputPipe()
 
     cout << "Enter pipe length (km): ";
     cin >> pipe.length;
+    while (pipe.length <= 0)
+    {
+        cout << "length must be greater than 0. Enter ahain: ";
+        cin >> pipe.length;
+    }
 
     cout << "Enter pipe diameter (mm): ";
     cin >> pipe.diameter;
+    while (pipe.diameter <= 0)
+    {
+        cout << "Diameter must be greater than 0. Enter again: ";
+        cin >> pipe.diameter;
+    }
 
     cout << "Is pipe under repair? (1-y/0-n): ";
     cin >> pipe.repair;
@@ -48,9 +58,19 @@ CompressorStation inputSation()
 
     cout << "Enter number of workshops: ";
     cin >> station.workshopCount;
+    while (station.workshopsInOperation < 0)
+    {
+        cout << "Number cannot be negative. Enter again: ";
+        cin >> station.workshopCount;
+    }
 
     cout << "Enter number of workshops in operation: ";
     cin >> station.workshopsInOperation;
+    while (station.workshopsInOperation > station.workshopCount || station.workshopsInOperation < 0)// || - or
+    {
+        cout << "Too many workshops. Enter again: ";
+        cin >> station.workshopsInOperation;
+    }
 
     cout << "Enter station class: ";
     cin >> station.stationClass;
@@ -99,6 +119,11 @@ void editStation(CompressorStation &station)
 {
     cout << "Enter number of workshops in operation: ";
     cin >> station.workshopsInOperation;
+    while (station.workshopsInOperation > station.workshopCount)
+    {
+        cout << "Too many workshops. Enter again: ";
+        cin >> station.workshopsInOperation;
+    }
 }
 
 void saveData(Pipe pipe, CompressorStation station)
@@ -120,9 +145,15 @@ void saveData(Pipe pipe, CompressorStation station)
     cout << "Data saved" << endl;
 }
 
-void loadData(Pipe &pipe, CompressorStation &station)
+bool loadData(Pipe &pipe, CompressorStation &station)
 {
     ifstream file("data.txt"); //чтение из файла
+
+    if (!file)//наличие файла
+    {
+        cout << "File not found" << endl;
+        return false;
+    }
 
     file >> pipe.name;
     file >> pipe.length;
@@ -137,6 +168,7 @@ void loadData(Pipe &pipe, CompressorStation &station)
     file.close();
 
     cout << "Data loaded" << endl;
+    return true;
 }
 
 int main()
@@ -232,11 +264,12 @@ int main()
                 break;
 
             case 7:
-                loadData(pipe, station);
-
-                pipeExists = true;
-                stationExists = true;
-                
+                if (loadData(pipe, station) == true);
+                {
+                    pipeExists = true;
+                    stationExists = true;
+                }
+                2
                 break;
 
             case 0:
