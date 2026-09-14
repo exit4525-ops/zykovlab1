@@ -87,20 +87,62 @@ int main()
     Pipe pipe; // P - тип данных, p - переменная
     CompressorStation station; 
 
-    //pipe
-    pipe = inputPipe();
-    cout << endl;
+    int command = -1;
 
-    //station
-    station = inputSation();
-    cout << endl;
+    while (command != 0)
+    {
+        cout << endl; 
+        cout << "1. Add pipe" << endl;
+        cout << "2. Add compressor station" << endl;
+        cout << "3. View all objects" << endl;
+        cout << "4. Edit pipe" << endl;
+        cout << "5. Edit Compressor station" << endl;
+        cout << "6. Save" << endl;
+        cout << "7. Load" << endl;
+        cout << "0. Exit" << endl;
 
-    //printPipe
-    printPipe(pipe);
-    cout << endl;
+        cout << "Enter command: ";
+        cin >> command;
+        
+        switch (command)
+        {
+            case 1:
+                cout << "Add pipe" << endl;
+                break;
 
-    //printStation
-    printCompressorStation(station);
+            case 2:
+                cout << "Add compressor station" << endl;
+                break;
+            
+            case 3:
+                cout << "View all objects" << endl;
+                break;
+            
+            case 4:
+                cout << "Edit pipe" << endl;
+                break;
+            
+            case 5:
+                cout << "Edit compressor station" << endl;
+                break;
+            
+            case 6:
+                cout << "Save" << endl;
+                break;
+
+            case 7:
+                cout << "Load" << endl;
+                break;
+
+            case 0:
+                cout << "Exit" << endl;
+                break;
+
+            default:
+                cout << "Wrong command" << endl;
+                break;
+        }
+    }
 
     return 0;
 }
