@@ -94,6 +94,12 @@ void printCompressorStation(CompressorStation station)
     cout << "Station class: " << station.stationClass << endl;
 }
 
+void editStation(CompressorStation &station)
+{
+    cout << "Enter number of workshops in operation: ";
+    cin >> station.workshopsInOperation;
+}
+
 int main()
 {
     Pipe pipe; // P - тип данных, p - переменная
@@ -165,7 +171,14 @@ int main()
                 break;
             
             case 5:
-                cout << "Edit compressor station" << endl;
+                if (stationExists == true)
+                {
+                    editStation(station);
+                }
+                else
+                {
+                    cout << "Station not added" << endl;
+                }
                 break;
             
             case 6:
