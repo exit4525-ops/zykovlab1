@@ -20,11 +20,9 @@ struct CompressorStation
 
 };
 
-int main()
+Pipe inputPipe()
 {
-    Pipe pipe; // P - тип данных, p - переменная
-    CompressorStation station; 
-    //pipe
+    Pipe pipe;
     cout << "Enter pipe name: ";
     cin >> pipe.name;
 
@@ -34,8 +32,35 @@ int main()
     cout << "Enter pipe diameter (mm): ";
     cin >> pipe.diameter;
 
-    cout << "Is pipe under repair? (1 - y/0 - n): ";
+    cout << "Is pipe under repair? (1-y/0-n): ";
     cin >> pipe.repair;
+
+    return pipe;
+}
+
+void printPipe(Pipe pipe)
+{
+    cout << "--- Pipe ---" << endl;
+    cout << "Name: " << pipe.name << endl;
+    cout << "Length: " << pipe.length << " km" << endl;
+    cout << "Diameter: " << pipe.diameter << " mm" << endl;
+    if (pipe.repair == true)
+    {
+        cout << "Repair: Yes" << endl;
+    }
+    else
+    {
+        cout << "Repair: No" << endl;
+    }
+}
+
+int main()
+{
+    Pipe pipe; // P - тип данных, p - переменная
+    CompressorStation station; 
+
+    //pipe
+    pipe = inputPipe();
 
     cout << endl;
 
@@ -52,21 +77,7 @@ int main()
     cout << "Enter station class: ";
     cin >> station.stationClass;
 
-    //out
-    cout << "--- Pipe ---" << endl;
-    cout << "Name: " << pipe.name << endl;
-    cout << "Length: " << pipe.length << " km" << endl;
-    cout << "Diameter: " << pipe.diameter << " mm" << endl;
-    
-    //y/n
-    if (pipe.repair == true)
-    {
-        cout << "Repair: Yes" << endl;
-    }
-    else
-    {
-        cout << "Repair: No" << endl;
-    }
+    printPipe(pipe);
 
     cout << endl;
 
@@ -79,5 +90,4 @@ int main()
 
 
     return 0;
-    
 }
